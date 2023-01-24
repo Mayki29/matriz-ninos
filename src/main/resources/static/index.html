@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Matriz Niños</title>
+
+    <!-- Custom fonts for this template -->
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/sb-admin-2.css" rel="stylesheet">
+
+    <!-- Custom styles for this page -->
+    <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+
+</head>
+
+<body id="page-top" class="sidebar-toggled">
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+
+        <!-- End of Sidebar -->
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+
+                <!-- Topbar -->
+
+                <!-- End of Topbar -->
+
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+
+                    <!-- Page Heading -->
+                    <h1 class="h3 mt-4 text-center text-gray-800">Matriz niños 3-11 años</h1>
+
+                    <div class="row">
+                        <div class="my-3 col-xl-9 col-md-6 mb-8">
+                            <button type="button" class="btn btn-primary" data-toggle="modal"
+                                data-target="#modalRegistro">
+                                Nuevo Registro <i class="fas fa-plus"></i>
+                            </button>
+
+                        </div>
+
+
+
+                    </div>
+
+
+                    <!-- DataTales Example -->
+                    <div class="card shadow mb-4">
+
+                        <div class="card-body">
+                            <div class="mb-4 searchInput">
+
+                                <input id="txtSearch" type="search" oninput="searchRifas()"
+                                    class="form-control w-auto border-0" style="display: initial !important;">
+                                <select name="" id="stColumna" class="form-control w-auto" oninput="changeTypeInput()">
+                                    <option value="nombres">Nombre</option>
+                                    <option value="apellidos">Apellido</option>
+                                    <option value="celular">Celular</option>
+                                    <option value="direccion">Direccion</option>
+                                    <option value="fecha">Fecha</option>>
+                                </select>
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="pacientes" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>HC</th>
+                                            <th>DNI</th>
+                                            <th>Nombres y Apellidos</th>
+                                            <th>Celular</th>
+                                            <th>ABO</th>
+                                            <th>Codigos</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+                                        <tr>
+                                            <td>-</td>
+                                            <td>-</td>
+                                            <td>-</td>
+                                            <td>-</td>
+                                            <td><input type="checkbox" onclick="marcarAbor()" checked></td>
+                                            <td>
+                                                <button type="button" class="btn btn-primary" data-toggle="modal"
+                                                    data-target="#exampleModalCenter"><i
+                                                        class="fas fa-eye"></i></button>
+                                            </td>
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- /.container-fluid -->
+
+            </div>
+            <!-- End of Main Content -->
+
+            <!-- Footer -->
+            <footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+
+                    </div>
+                </div>
+            </footer>
+            <!-- End of Footer -->
+
+        </div>
+        <!-- End of Content Wrapper -->
+
+    </div>
+    <!-- End of Page Wrapper -->
+
+
+    <!-- Modal Codigo -->
+    <div class="modal fade" id="modalCodigo" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalCenterTitle">Codigos paciente</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div id="modal-codigo-cabeza">
+                        <div class="row">
+                            <div class="col-6">
+                                <h6 style="font-size: 1.2rem; color: purple; font-style: italic;">Codigo</h6>
+                            </div>
+                            <div class="col-6">
+                                <h6 style="font-size: 1.2rem; color: purple; font-style: italic;">Fecha</h6>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="modal-codigo-cuerpo">
+                        <div class="row">
+                            <div class="col-6">
+                                <p>...</p>
+                            </div>
+                            <div class="col-6">
+                                <p>...</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <p>...</p>
+                            </div>
+                            <div class="col-6">
+                                <p>...</p>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Registro-->
+    <div class="modal fade" id="modalRegistro" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Registrar paciente</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div>
+                            <div class="form-group">
+                                <label for="recipient-name" class="col-form-label">Nombres y Apellidos</label>
+                                <input type="text" class="form-control" id="txtNameRegistro"
+                                    oninput="searchPacientesRegistro()" required>
+                                <input type="text" class="form-control" id="txtIdRegistro" hidden>
+
+                            </div>
+                            <div class="list-group" id="lista-nombres-registrados">
+
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">HC</label>
+                            <input type="text" class="form-control" id="txtHcRegistro" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">DNI</label>
+                            <input type="text" class="form-control" id="txtDniRegistro" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Celular</label>
+                            <input type="text" class="form-control" id="txtCelularRegistro">
+                        </div>
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Codigos</label>
+                            <div class="row m-0" id="divCodigos">
+                                <select class="form-control" id="selectCodigo" onchange="agregrarInputCodigo()">
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                </select>
+                                <div class="p-0 pl-1" id="divCodigoExtra">
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button onclick="registrarPaciente()" type="button" class="btn btn-primary">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="js/sb-admin-2.min.js"></script>
+
+    <!-- Page level plugins -->
+    <script src="vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="js/paciente.js"></script>
+    <script src="js/crearPaciente.js"></script>
+
+</body>
+
+</html>
